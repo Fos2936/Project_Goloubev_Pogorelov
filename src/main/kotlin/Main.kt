@@ -1,5 +1,5 @@
 fun main(args: Array<String>) {
-    val str = "A"
+    val str = "AAADSSSRRTTHAAAA"
     val symbolsArray = str.toCharArray()
 
     for (i in symbolsArray) print(i)
