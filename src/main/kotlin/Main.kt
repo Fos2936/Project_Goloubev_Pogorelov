@@ -80,11 +80,11 @@ fun task5(x: Double?, n: Double?) {
         return
     }
 
-    var y = ln(n) / ln(x)
-    var roundedY = round(y)
+    val y = ln(n) / ln(x)
+    val roundedY = round(y)
 
     if (abs(y - roundedY) < 1e-10) {
-        var check = Math.pow(x, roundedY)
+        val check = Math.pow(x, roundedY)
         if (abs(check - n) < 1e-10) {
             println("Результат: y = $roundedY")
         } else {
@@ -108,7 +108,7 @@ fun task6(N1: Int?, N2: Int?) {
     }
 }
 
-fun main(args: Array<String>) {
+fun main() {
     println("Выберите действие, которое будет делать программа.\n"
             + "1) Алгоритм сжатия RLE (Run-Length Encoding);\n"
             + "2) Приложение, которое подсчитывает количество различных символов во введённой строке. Символы выводятся в алфавитном порядке;\n"
@@ -121,8 +121,19 @@ fun main(args: Array<String>) {
     val choice = readln().toIntOrNull()
     when (choice) {
         1 -> {
-            val str = "AAADSSSRRTTHAAAA"
+            print("Введите строку только из букв (например, AAADSSSRRTTHAAAA): ")
+            val str = readLine().toString()
             val symbolsArray = str.toCharArray()
+
+            symbolsArray.forEach {
+                if (it == '0' || it == '1' || it == '2' || it == '3' ||
+                    it == '4' || it == '5' || it == '6' ||
+                    it == '7' || it == '8' || it == '9') {
+                    println("Ошибка! В строке присутствет цифра")
+                    return
+                }
+            }
+
             print("Исходная строка: ")
 
             for (i in symbolsArray) print(i)
@@ -131,9 +142,11 @@ fun main(args: Array<String>) {
             task1(symbolsArray)
         }
         2 -> {
-            val str = "AASADDSS"
+            print("Введите строку символов (например, AASADDSS): ")
+            val str = readLine().toString()
             val symbolsArray = str.toCharArray()
             print("Исходная строка: ")
+
             for (i in symbolsArray) print(i)
             println()
             print("Результат: ")
@@ -141,36 +154,36 @@ fun main(args: Array<String>) {
         }
         3 -> {
             print("Введите натуральное число: ")
-            var number = readln()?.toIntOrNull() ?: 0 // ?. оператор безопасного вызова
+            val number = readln()?.toIntOrNull() ?: 0 // ?. оператор безопасного вызова
             print("Двоичная запись числа: ")
             task3(number)
         }
         4 -> {
             print("Введите первое число: ")
-            var n1 = readln().toDoubleOrNull()
+            val n1 = readln().toDoubleOrNull()
 
             print("Введите второе число: ")
-            var n2 = readln().toDoubleOrNull()
+            val n2 = readln().toDoubleOrNull()
 
             print("Введите математическую операцию (+, -, *, /): ")
-            var symbol = readln().trim().firstOrNull()
+            val symbol = readln().trim().firstOrNull()
             task4(n1, n2, symbol)
         }
         5 -> {
             print("Введите x (основание степени): ")
-            var x = readln().toDoubleOrNull()
+            val x = readln().toDoubleOrNull()
 
             print("Введите n: ")
-            var n = readln().toDoubleOrNull()
+            val n = readln().toDoubleOrNull()
 
             task5(x, n)
         }
         6 -> {
             print("Введите первую цифру: ")
-            var N1 = readln().toIntOrNull()
+            val N1 = readln().toIntOrNull()
 
             print("Введите вторую цифру: ")
-            var N2 = readln().toIntOrNull()
+            val N2 = readln().toIntOrNull()
 
             task6(N1, N2)
         }
